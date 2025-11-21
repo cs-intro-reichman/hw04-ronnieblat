@@ -16,7 +16,7 @@ while (p<=Math.sqrt(n)){
         p++;
 }
 int counter=0;
-for (int i=0;i<n;i++){
+for (int i=0;i<n+1;i++){
     if (arr[i]){
         counter++;
         System.out.println(i);
