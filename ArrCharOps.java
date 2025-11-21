@@ -3,6 +3,7 @@
 public class ArrCharOps {
     public static void main(String[] args) {
         String str = "clearly";
+        char[] arr={'a' , 'b' , 'c'};
         char[] arr1 = {'c','l','e','a','r','l','y'};
         char[] arr2 = {'U','n','d','e','r','s','t', 'o', 'o', 'd'};
         System.out.println(str);  // Prints the string
@@ -22,6 +23,7 @@ public class ArrCharOps {
         System.out.println(compareTo("Zoo", "zoo"));
         System.out.println(hashCode(arr1));
         System.out.println(hashCode(arr2));
+        System.out.println(hashCode(arr));
     }
 
     /** Prints the given array of characters, and moves the cursor to the next line.
@@ -112,11 +114,13 @@ public class ArrCharOps {
      *  The hash value of an empty array is zero.
      */
     public static long hashCode(char[] arr) {
-        int result=0;
-        int n=arr.length;
+        long result=0;
+        int n=arr.length-1;
         for (int i=0;i<arr.length; i++){
-            int num = (int) Math.pow(arr[i]*7, n-1);
-            result+= num;
+            long num =1;
+            for (int j=0;j<n;j++)
+                num =  num*7;
+            result+= (long) arr[i]*num;
             n--;
         }
 
@@ -154,6 +158,8 @@ public class ArrCharOps {
         int i=0;
         while (i<str1.length() && i<str2.length() && str1.charAt(i)==str2.charAt(i))
             i++;
+        if (i==str1.length()&&i==str2.length())
+            return 0;
         if (i==str1.length())
             return -1;
         if (i==str2.length())
